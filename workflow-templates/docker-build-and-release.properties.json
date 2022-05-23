@@ -1,0 +1,12 @@
+{
+    "name": "Clever Docker/Helm Build & Release workflow",
+    "description": "Action template to build and release a docker image with a helm package.",
+    "iconName": "octicon feed-rocket",
+    "categories": [
+        "Dockerfile"
+    ],
+    "filePatterns": [
+        "^Dockerfile",
+        "helm/*"
+    ]
+}

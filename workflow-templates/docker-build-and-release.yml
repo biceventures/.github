@@ -1,0 +1,23 @@
+name: Docker Build & Release
+
+on:
+  # build and release a new docker image and helm package for specific tags.
+  release:
+    types: [prereleased, released]
+
+jobs:
+  build:
+    # Github action path and version
+    uses: biceventures/common_docker_actions/.github/workflows/docker_release.yml@stable
+    # Require inputs of this workflow
+    with:
+      # App name or service name / use repository name by default.
+      project_name: ${{ github.event.repository.name }}
+      values_file_path: ./helm/chart/values.yaml
+      chart_path: ./helm/chart/
+    secrets:
+      # Define an APP_KSA/GSA only if the app needs to consume any google services.
+      APP_KSA: ${{ secrets.APP_KSA }} # optional
+      APP_GSA: ${{ secrets.APP_GSA }} # optional
+      CLEVER_DOCKER_REGISTRY: ${{ secrets.CLEVER_DOCKER_REGISTRY }}
+      CLEVER_HELM_REGISTRY: ${{ secrets.CLEVER_HELM_REGISTRY }}
