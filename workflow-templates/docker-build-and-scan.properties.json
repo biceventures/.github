@@ -1,0 +1,11 @@
+{
+    "name": "Clever Docker Build & scan workflow",
+    "description": "Action template to build and scan a docker image for vulnerabilities.",
+    "iconName": "octicon codescan",
+    "categories": [
+        "Dockerfile"
+    ],
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}
