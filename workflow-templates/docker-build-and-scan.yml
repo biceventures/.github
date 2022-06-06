@@ -3,10 +3,18 @@ name: Docker Security Scan
 on:
   # build and test in PRs
   pull_request:
-    paths:
-     - Dockerfile
-     - src/**
-
+    # paths: If at least one path matches a pattern in the paths filter, the workflow runs.
+    # also paths-ignore can be used: When all the path names match patterns in paths-ignore,
+    # the workflow will not run. If any path names do not match patterns in paths-ignore, even
+    # if some path names match the patterns, the workflow will run.
+    # You can not use paths and paths-ignore to filter the same event in a single workflow.
+    # If you want to both include and exclude path patterns for a single event, use the paths 
+    # filter along with the ! character to indicate which paths should be excluded.
+    paths: 
+     - 'Dockerfile'
+     - 'src/**'
+     - '!src/docs/**' 
+    
 jobs:
   build_docker:
     # Github action path and version
@@ -15,3 +23,6 @@ jobs:
     with:
       # App name or service name / use repository name by default.
       project_name: ${{ github.event.repository.name }}
+    secrets:
+      # For Docker Registry
+      CLEVER_DOCKER_REGISTRY: ${{ secrets.CLEVER_DOCKER_REGISTRY }}

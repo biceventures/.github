@@ -16,8 +16,10 @@ jobs:
       values_file_path: ./helm/chart/values.yaml
       chart_path: ./helm/chart/
     secrets:
-      # Define an APP_KSA/GSA only if the app needs to consume any google services.
+      # For use GCP services with Workload Identity
       APP_KSA: ${{ secrets.APP_KSA }} # optional
       APP_GSA: ${{ secrets.APP_GSA }} # optional
+      GOOGLE_PROJECT_ID: ${{ secrets.APP_GSA }} # optional
+      # For Docker Registry and Helm
       CLEVER_DOCKER_REGISTRY: ${{ secrets.CLEVER_DOCKER_REGISTRY }}
       CLEVER_HELM_REGISTRY: ${{ secrets.CLEVER_HELM_REGISTRY }}
