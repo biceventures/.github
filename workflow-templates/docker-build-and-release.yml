@@ -13,13 +13,15 @@ jobs:
     with:
       # App name or service name / use repository name by default.
       project_name: ${{ github.event.repository.name }}
-      values_file_path: ./helm/chart/values.yaml
+      values_file_path: ./helm/chart/app/values.yaml # replace app with the app folder name
       chart_path: ./helm/chart/
-    secrets:
-      # For use GCP services with Workload Identity
-      APP_KSA: ${{ secrets.APP_KSA }} # optional
-      APP_GSA: ${{ secrets.APP_GSA }} # optional
-      GOOGLE_PROJECT_ID: ${{ secrets.APP_GSA }} # optional
-      # For Docker Registry and Helm
-      CLEVER_DOCKER_REGISTRY: ${{ secrets.CLEVER_DOCKER_REGISTRY }}
-      CLEVER_HELM_REGISTRY: ${{ secrets.CLEVER_HELM_REGISTRY }}
+      # Aditional inputs handled by this action
+      # dockerfile_path: Path to the Dockerfile. Default is Dockerfile. (default: Dockerfile)
+    secrets: inherit # inherit all secrets to the action
+    # secrets handled by this action:
+    # - CLEVER_DOCKER_REGISTRY: Google artifact docker registry (required)
+    # - CLEVER_HELM_REGISTRY: Google artifact helm registry (required)
+    # - APP_KSA: App kubernetes service account (optional)
+    # - APP_GSA: App Google Service Account (optional)
+    # - GOOGLE_PROJECT_ID: Google project ID where this app will be deployed. (optional)
+    # - BUILD_ARGS: Comma separated list of extra build-args for docker (optional)
