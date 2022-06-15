@@ -1,0 +1,14 @@
+{
+    "name": "Clever Helm Charts Lint and Test",
+    "description": "Action template to run linting and testing for helm charts.",
+    "iconName": "octicon git-pull-request-closed",
+    "categories": [
+        "Dockerfile",
+        "Helm"
+    ],
+    "filePatterns": [
+        "^Dockerfile",
+        "^helm",
+        "^Chart.yaml"
+    ]
+}
