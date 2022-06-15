@@ -1,0 +1,22 @@
+name: Helm Lint and Test Charts
+
+on: pull_request
+
+jobs:
+  helm_lint:
+    # Github action path and version
+    uses: biceventures/common_docker_actions/.github/workflows/helm_lint.yml@stable
+    # Require inputs of this workflow
+    with:
+      # App name or service name / use repository name by default.
+      project_name: ${{ github.event.repository.name }}
+      values_file_path: ./helm/chart/app/values.yaml # REPLACE app with the app folder name
+      chart_path: ./helm/chart/
+    secrets: inherit # inherit all secrets to the action
+    # secrets handled by this action:
+    # - CLEVER_DOCKER_REGISTRY: Google artifact docker registry (required)
+    # - CLEVER_HELM_REGISTRY: Google artifact helm registry (required)
+    # - APP_KSA: App kubernetes service account (optional)
+    # - APP_GSA: App Google Service Account (optional)
+    # - GOOGLE_PROJECT_ID: Google project ID where this app will be deployed. (optional)
+    # - BUILD_ARGS: Comma separated list of extra build-args for docker (optional)
