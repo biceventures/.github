@@ -9,6 +9,7 @@
     "filePatterns": [
         "^Dockerfile",
         "^helm",
-        "^Chart.yaml"
+        ".*Chart.yaml"
+        ".*Chart.yml"
     ]
 }
