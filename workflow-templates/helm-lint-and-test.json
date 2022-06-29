@@ -4,7 +4,7 @@
     "iconName": "octicon git-pull-request-closed",
     "categories": [
         "Dockerfile",
-        "Helm"
+        "Deployment"
     ],
     "filePatterns": [
         "^Dockerfile",
