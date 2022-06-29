@@ -3,8 +3,7 @@
     "description": "Action template to run linting and testing for helm charts.",
     "iconName": "octicon git-pull-request-closed",
     "categories": [
-        "Dockerfile",
-        "Deployment"
+        "Dockerfile"
     ],
     "filePatterns": [
         "^Dockerfile",
