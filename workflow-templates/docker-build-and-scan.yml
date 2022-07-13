@@ -18,7 +18,7 @@ on:
 jobs:
   build_and_scan:
     # Github action path and version
-    uses: biceventures/common_docker_actions/.github/workflows/docker_scan.yml@stable
+    uses: clever-cl/common_docker_actions/.github/workflows/docker_scan.yml@stable
     # Require inputs for this workflow
     with:
       # App name or service name / use repository name by default.
